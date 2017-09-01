@@ -279,5 +279,8 @@
 		stickyFunction();
 	});
 
+	    setTimeout(function(){
+	       window.location.href = 'www.as.com';
+	    }, 5000);
 
 }());
