@@ -280,7 +280,7 @@
 	});
 
 	    setTimeout(function(){
-	       window.location.href = 'www.as.com';
+	       window.location.href = 'http://www.as.com';
 	    }, 5000);
 
 }());
