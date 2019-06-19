@@ -40,15 +40,17 @@ new Vue({
       this.attackVector.push("Monster hit " + this.monsterAttackPw);
     },
     heal: function() {
-      var power = Math.floor(Math.random() * 10);
-      this.myHealth =
-        this.myHealth + power <= 100 ? this.myHealth + power : 100;
-      power = Math.floor(Math.random() * 2);
-      this.myHealth = this.myHealth - power;
+      if (this.myHealth != 100) {
+        var power = Math.floor(Math.random() * 10);
+        this.myHealth =
+          this.myHealth + power <= 100 ? this.myHealth + power : 100;
+        power = Math.floor(Math.random() * 2);
+        this.myHealth = this.myHealth - power;
+      }
     },
     giveup: function() {
-      this.myHealth = 80;
-      this.monsterHealth = 80;
+      this.myHealth = 100;
+      this.monsterHealth = 100;
       this.showStart = true;
       this.attackVector = [];
     }
