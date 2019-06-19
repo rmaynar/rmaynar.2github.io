@@ -1,68 +1,54 @@
-<!DOCTYPE HTML>
-<!--
-	Identity by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html>
-
 <head>
-	<title>Raúl Maynar Selgas</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
-	<noscript>
-		<link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-128611379-1"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'UA-128611379-1');
-	</script>
+    <title>Monster Slayer</title>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" href="css/app.css">
 </head>
+<body>
+<div id="app">
+    <section class="row">
+        <div class="small-6 columns">
+            <h1 class="text-center">YOU</h1>
+            <div class="healthbar" >
+                <div class="healthbar text-center" :style="myHealthStyle" style="background-color: green; margin: 0; color: white;">
 
-<body class="is-preload">
+                </div>
+            </div>
+        </div>
+        <div class="small-6 columns">
+            <h1 class="text-center">MONSTER</h1>
+            <div class="healthbar">
+                <div class="healthbar text-center" :style="monsterHealthStyle" style="background-color: green; margin: 0; color: white;">
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section v-if="showStart" class="row controls">
+        <div class="small-12 columns">
+            <button id="start-game" @click="showStart = !showStart">START NEW GAME</button>
+        </div>
+    </section>
+    <section v-if="!showStart" class="row controls">
+        <div class="small-12 columns">
+            <button id="attack" @click="attack">ATTACK</button>
+            <button id="special-attack" @click="powerAttack">SPECIAL ATTACK</button>
+            <button id="heal" @click="heal">HEAL</button>
+            <button id="give-up" @click="giveup">GIVE UP</button>
+        </div>
+    </section>
+    <section class="row log">
+        <div class="small-12 columns">
+            <ul>
+                <li>
 
-		<!-- Main -->
-		<section id="main">
-			<header>
-				<span class="avatar"><img width="40%" height="40%" src="images/avatar.jpg" alt="Raúl" /></span>
-				<h1>Raúl Maynar Selgas</h1>
-				<p>Software Engineer</p>
-			</header>
-
-			<footer>
-				<ul class="icons">
-					<li><a href="https://www.github.com/rmaynar" class="fa-github" target="_blank">GitHub</a></li>
-					<li><a href="https://www.linkedin.com/in/raulmaynar" class="fa-linkedin" target="_blank">LinkedIn</a></li>
-				</ul>
-			</footer>
-		</section>
-
-		<!-- Footer -->
-		<footer id="footer">
-			<ul class="copyright">
-				<li>&copy; Raúl Maynar Selgas</li>
-				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-			</ul>
-		</footer>
-
-	</div>
-
-	<!-- Scripts -->
-	<script>
-		if ('addEventListener' in window) {
-			window.addEventListener('load', function () { document.body.className = document.body.className.replace(/\bis-preload\b/, ''); });
-			document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
-		}
-	</script>
-
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="app.js"></script>
 </body>
-
 </html>
