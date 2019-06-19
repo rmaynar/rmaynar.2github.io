@@ -13,7 +13,7 @@
             <h1 class="text-center">YOU</h1>
             <div class="healthbar" >
                 <div class="healthbar text-center" :style="myHealthStyle" style="background-color: green; margin: 0; color: white;">
-
+                    {{myHealth}}
                 </div>
             </div>
         </div>
@@ -21,7 +21,7 @@
             <h1 class="text-center">MONSTER</h1>
             <div class="healthbar">
                 <div class="healthbar text-center" :style="monsterHealthStyle" style="background-color: green; margin: 0; color: white;">
-
+                    {{monsterHealth}}
                 </div>
             </div>
         </div>
@@ -42,8 +42,13 @@
     <section class="row log">
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for="(elem,i) in attackVector">
+                    <div v-if="i%2==0">
+                        <div class="player-turn">{{elem}}</div>
+                    </div>
+                    <div v-else>
+                        <div class="monster-turn" >{{elem}}</div>
+                    </div>
                 </li>
             </ul>
         </div>

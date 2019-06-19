@@ -2,15 +2,16 @@ new Vue({
   el: "#app",
   data: {
     showStart: true,
-    myHealth: 80,
-    monsterHealth: 80,
+    myHealth: 100,
+    monsterHealth: 100,
     myAttackPw: 0,
-    monsterAttackPw: 0
+    monsterAttackPw: 0,
+    attackVector: []
   },
   methods: {
     attack: function() {
-      this.myAttackPw = Math.random() * 5;
-      this.monsterAttackPw = Math.random() * 2;
+      this.myAttackPw = Math.floor(Math.random() * 5);
+      this.monsterAttackPw = Math.floor(Math.random() * 2);
       this.myHealth =
         this.monsterAttackPw < this.myHealth
           ? this.myHealth - this.monsterAttackPw
@@ -19,10 +20,13 @@ new Vue({
         this.myAttackPw < this.monsterHealth
           ? this.monsterHealth - this.myAttackPw
           : 0;
+      //updates the attack vector
+      this.attackVector.push("You hit " + this.myAttackPw);
+      this.attackVector.push("Monster hit " + this.monsterAttackPw);
     },
     powerAttack: function() {
-      this.myAttackPw = Math.random() * 10;
-      this.monsterAttackPw = Math.random() * 2;
+      this.myAttackPw = Math.floor(Math.random() * 10);
+      this.monsterAttackPw = Math.floor(Math.random() * 2);
       this.myHealth =
         this.monsterAttackPw < this.myHealth
           ? this.myHealth - this.monsterAttackPw
@@ -31,17 +35,22 @@ new Vue({
         this.myAttackPw < this.monsterHealth
           ? this.monsterHealth - this.myAttackPw
           : 0;
+      //updates the attack vector
+      this.attackVector.push("You hit " + this.myAttackPw);
+      this.attackVector.push("Monster hit " + this.monsterAttackPw);
     },
     heal: function() {
-      var power = Math.random() * 10;
-      this.myHealth = this.myHealth + power;
-      power = Math.random() * 7;
+      var power = Math.floor(Math.random() * 10);
+      this.myHealth =
+        this.myHealth + power <= 100 ? this.myHealth + power : 100;
+      power = Math.floor(Math.random() * 2);
       this.myHealth = this.myHealth - power;
     },
     giveup: function() {
       this.myHealth = 80;
       this.monsterHealth = 80;
-      showStart = true;
+      this.showStart = true;
+      this.attackVector = [];
     }
   },
   computed: {
@@ -64,7 +73,7 @@ new Vue({
     },
     monsterHealth: function() {
       if (this.monsterHealth === 0) {
-        alert("You won!");
+        alert("You win!");
       }
     }
   }
